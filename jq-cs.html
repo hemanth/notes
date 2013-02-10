@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+<title>JavaScript vs Jquery+CoffeeScript</title>
+<style type='text/css'>
+
+html		{height: 100%; /* required for `min-height` on the body to equate to at least screen-height also */
+		 margin: 0; padding: 0; border: 0;
+		 font: 20px "Helvetica Neue", Arial, Helvetica, sans-serif; text-align: justify; color: #333;
+		 background: #eee;}
+body		{position: relative; /* required for IE */
+		 min-height: 100%;
+		 width: 980px; margin: 0 auto; /* center the body */
+		 background: white;}
+
+header {dispaly:block;text-align: center;background: dimGray;color: whiteSmoke}
+footer {dispaly:block;text-align: center;background: dimGray;position:absolute;bottom: 0; width:100%; color: whiteSmoke}
+		/* main column */
+article		{display: block; padding: 0 20px 20px 320px;}
+
+		/* left column */
+aside		{/* use `position: fixed` for a neat effect. use `overflow: hidden` to cut off when main column is short */
+		 display: block; position: absolute; top: 30px; bottom: 30px; width: 260px; overflow: auto;
+		 padding: 0 20px 0 20px;
+		 text-align: left; font-size: 85%; color: #eee;
+		 background:#333;}
+
+p		{margin: 0; padding: 20px 0 0 0;}
+
+li>a:link { color: linen; }
+li>a:hover { color: white; }
+li>a:visited { color:white; text-decoration: line-through; }
+
+h2 {font: 70px Tahoma, Helvetica, Arial, Sans-Serif;
+text-align: center;
+color: #222;
+text-shadow: 0px 2px 3px #555;}
+pre {background-color: #eeeeee; border: 1px dashed #999999; color: black; font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; font-size: 12px; line-height: 14px; overflow: auto; padding: 5px; width: 100%;}
+code {font-family: Pragmata, Menlo, 'DejaVu LGC Sans Mono', 'DejaVu Sans Mono', Consolas, 'Everson Mono', 'Lucida Console', 'Andale Mono', 'Nimbus Mono L', 'Liberation Mono', FreeMono, 'Osaka Monospaced', Courier, 'New Courier', monospace;}
+</style>
+<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><body><![endif]-->
+</head> 
+<body>
+   <header>
+	JavaScript vs Jquery+CoffeeScript
+   </header>
+	
+  <aside>
+    <ol>
+     <li> <a href="#ready" >Document is ready?</a> </li>
+     <li> <a href="#query">Query Selectors.</a></li>
+     <li> <a href="#create-elem" >Create a new Element.</a></li>
+     <li> <a href="#add-class" >Add a class to an Element.</a></li>
+     <li> <a href="#toggle-class" >Toggle a class of an Element.</a></li>
+     <li> <a href="#add-event" >Add an Event to particular Element.</a></li>
+     <li> <a href="#append-body" >Appened Element to body.</a></li>
+     <li> <a href="#add-attr">Add attribute to an element.</a></li>
+     <li> <a href="#get-parent" >Get parent node.</a></li>
+     <li> <a href="#clone-elem" >Clone an element.</a></li>
+     <li> <a href="#clear-child" >Clear Child nodes.</a></li>
+     <li> <a href="#child-present" >Check if children are present.</a></li>
+     <li> <a href="#next-sibling" >Get next sibling.</a></li>
+     <li> <a href="#ajax" >Ajax calls.</a></li>
+    </ol>
+  </aside>
+
+
+  <article>
+       <h2> JavaScript vs Jquery+CoffeeScript </h2>
+       <p>A simple collections of examples for doing most common tasks in 
+           Raw JavaScript vs Jquery+CoffeeScript.</p>
+       <p>This page is build by hand using CSS3 and HTML5 </p>
+       <p>Use the navigation menu on the left to navigate to a particular sub topic, note this page does not make use of any JS ;) and is heavy inspired by Eric Bidelman's <a href="http://sharedfil.es/js-48hIfQE4XK.html">Jq vs JS</a></p>
+       <p> Finally in case of any bugs, please feel free to <a href="http://h3manth.com/contact">contact</a> me</p>
+      
+      <div id="ready">
+      <p> Document is ready? </p>
+      <pre>
+	<code>
+	// Raw JavaScript
+		document.addEventListener("DOMContentLoaded", function() {
+  		// body
+	});
+        </code>
+      </pre>
+      <pre>
+        <code>
+        // CoffeeScript+jQuery
+        $ -> code
+        </code> 
+      </pre>
+      </div>
+      
+
+      <div id="query">
+      <p> Query Selectors </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+	 var links = document.querySelectorAll("a");
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          links = $ "a"
+        </code> 
+      </pre>
+      </div>
+ 
+      <div id="create-elem">
+      <p> Creating a new Element </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          var newPara = document.createElement("p");
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          para = $ "&lt;p&gt;"
+        </code> 
+      </pre>
+     </div> 
+
+      <div id="add-class">
+      <p> Add a class to an Element </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          newPara.classList.add("bar");
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          para.addClass "bar"
+        </code> 
+      </pre>
+     </div>
+
+      <div id="toggle-class">
+      <p> Toggle a class to an Element </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          newPara.classList.toggle("bar");
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          newPara.toggleClass "bar"
+        </code> 
+      </pre>
+     </div>
+	
+      <div id="add-event">
+      <p> Add a click event to links </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+	 [].forEach.call(document.querySelectorAll("a"), function(el) {
+  	    el.addEventListener("click", function() {
+             // body
+           });
+         });
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          $("a").click -> code
+       </code> 
+      </pre>
+     </div>
+	
+      <div id="#append-body">
+      <p> Appened Element to body </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          document.body.appendChild(document.createElement("p"));
+       </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+	  $("body").append $("&lt;p&gt;")
+        </code>
+      </pre>
+      </div>
+      
+      <div id="add-attr">
+      <p> Add an attribute to an Element </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          document.querySelector("img").setAttribute("alt", "Me");
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          $("img:first").attr "alt", "Me"
+        </code> 
+      </pre>
+      </div>
+    
+   	 
+      <div id="get-parent">
+      <p> Get parent node </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          var parent = document.getElementById("contact").parentNode;
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          parent = $("#contact").parent()
+        </code> 
+      </pre>
+      </div>
+      
+      <div id="clone-elem">
+      <p> Clone an element </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          var twin = document.getElementById("contact").cloned(true);
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          twin = $("#contact").clone()
+        </code> 
+      </pre>
+      </div>
+     
+	 
+      <div id="clear-child">
+      <p> Clear child nodes. </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          var contact = document.getElementById("contact");
+          while(contact.firstChild) contact.removeChild(contact.firstChild);
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          twin = $("#contact").empty()
+        </code> 
+      </pre>
+      </div>
+     
+       
+      <div id="child-present">
+      <p> Check if element has child nodes </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          if(!document.getElementById("contact").hasChildNodes()) { ... }
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          if $("#contact").is(":empty")
+  	     //code
+        </code> 
+      </pre>
+      </div>
+   
+ 
+      <div id="next-sibling">
+      <p> Get the next sibling of an element </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          var nextKin = document.getElementById("contact").nextSibling;
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          nextKin = $("#contact").next()
+        </code> 
+      </pre>
+      </div>
+      
+      
+      <div id="ajax">
+      <p> Ajax calls. </p>
+      <pre>
+	<code>
+          // Raw JavaScript
+          var xhr = new XMLHttpRequest();  
+	  xhr.open("GET","/", false);  
+	  xhr.send(null);
+	  console.log(xhr.responseText);
+        </code>
+      </pre>
+      <pre>
+        <code>
+          // CoffeeScript+jQuery
+          $.ajax '/',
+    	    type: 'GET'
+            dataType: 'html'
+          error: (jqXHR, textStatus, errorThrown) ->
+               $('body').append "AJAX Error: #{textStatus}"
+          success: (data, textStatus, jqXHR) ->
+                 $('body').append "Successful AJAX call: #{data}" 
+        </code> 
+      </pre>
+      </div>
+  
+  </article>
+  <footer>
+      Read more on <a href="http://h3manth.com">h3manth.com</a>
+  </footer>
+ </body>
+</html>
